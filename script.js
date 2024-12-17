@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="success-message">Transaksi Berhasil!</div>
             <div class="total">Silahkan siapkan uang tunai sebesar <strong>Rp${total.toLocaleString()}</strong> sesuai pesanan.</div>
             <div class="address">Alamat Pengiriman: <strong>${address}</strong></div>
-            <button onclick="window.close()" style="background-color: #00b14f; top:20px ; color: white; padding: 10px 20px; border: none; cursor: pointer;"><a href="page.html" style="text-decoration: none;">Kembali Belanja</a></button>
+            <button onclick="window.close()" style="background-color: #00b14f; top:20px ; color: white; padding: 10px 20px; border: none; cursor: pointer;"><a href="index.html" style="text-decoration: none;">Kembali Belanja</a></button>
           </body>
         </html>
       `);
