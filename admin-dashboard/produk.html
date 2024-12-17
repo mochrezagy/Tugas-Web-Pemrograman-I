@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Produk</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+    
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      background-color: #00b14f; 
+      color: white;
+      border-bottom: 1px solid #ddd;
+      position: fixed; 
+      top: 0;
+      width: 100%;
+      z-index: 1000; 
+      animation: slideDown 0.5s ease-out; 
+    }
+    
+    .header img {
+      height: 60px;
+      margin-left: 15px;
+    }
+    
+    .header .location {
+      font-size: 14px;
+      color: #d5f5e3; 
+    }
+    
+    .header .search {
+      display: flex;
+      align-items: center;
+      background-color: #f0f0f0;
+      border-radius: 20px;
+      padding: 5px 10px;
+      margin-right: 40px;
+    }
+    
+    .header .search input {
+      border: none;
+      background: none;
+      outline: none;
+      padding: 5px;
+    }
+    
+    .header .search i {
+      color: #666;
+    }
+    
+    .nav {
+      display: flex;
+      justify-content: space-around;
+      background-color: white;
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+      margin-top: 70px; 
+      animation: fadeIn 0.7s ease-in;
+    }
+    
+    .nav a {
+      text-decoration: none;
+      color: #333;
+      padding: 10px 20px;
+      font-size: 14px;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+    
+    .nav a:hover {
+      color: #00b14f; 
+      transform: scale(1.1); 
+    }
+    
+    .nav a.active {
+      color: #00b14f;
+      border-bottom: 2px solid #00b14f;
+    }
+    
+    #products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 20px;
+      margin-top: 120px; 
+      margin-bottom: 100px; 
+    }
+    
+    .product {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transform: translateY(10px);
+      opacity: 0;
+      animation: fadeUp 0.5s ease-out forwards; 
+    }
+    
+    .product img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease; 
+    }
+    
+    .product img:hover {
+      transform: scale(1.1); 
+    }
+    
+    .product .description {
+      font-size: 14px;
+      color: #666;
+      margin: 5px 0;
+    }
+    
+    .product .new-price {
+      font-size: 16px;
+      color: #333;
+      font-weight: bold;
+    }
+    
+    .product button {
+      color: white;
+      background-color: #00b14f; 
+      border: none;
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 10px 40px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    
+    .product button:hover {
+      background-color: #028743; 
+      transform: scale(1.05); 
+    }
+    
+    .footer {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #028743;
+      padding: 10px 0;
+      position: fixed; 
+      bottom: 0;
+      width: 100%;
+      z-index: 1000; 
+      animation: slideUp 0.5s ease-out;
+    }
+    
+    .footer a {
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+      text-align: center;
+      transition: transform 0.2s ease, color 0.3s ease;
+    }
+    
+    .footer a i {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+    
+    .footer a:hover {
+      color: #d5f5e3; 
+      transform: scale(1.1);
+    }
+    
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideUp {
+      from {
+        transform: translateY(100%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Semua Produk</h1>
+  </div>
+  <div id="products" class="products">
+    <button id="add-product-button" style="margin: 20px; padding: 10px 20px; background-color: #00b14f; color: white; border: none; border-radius: 10px; cursor: pointer;">Tambah Produk</button>
+    <div class="product">
+      <img
+        alt="Cleo Galon"
+        height="200"
+        src="../img/galoncleo.jpg"
+        width="150"
+      />
+      <div class="new-price">Rp44.900</div>
+      <div class="description">
+        Cleo Galon [Galon Beli Air]
+        <br />
+        19 Liter
+      </div>
+      <button class="delete-product" style="margin-top: 10px; padding: 5px 10px; background-color: red; color: white; border: none; border-radius: 5px; cursor: pointer;">Hapus</button>
+    </div>
+    <div class="product">
+      <img
+        alt="AQUA Galon"
+        height="200"
+        src="../img/galonaqua.webp"
+        width="150"
+      />
+      <div class="new-price">Rp54.500</div>
+      <div class="description">
+        AQUA Mineral [Galon Beli Air]
+        <br />
+        19 Liter
+      </div>
+      <button class="delete-product" style="margin-top: 10px; padding: 5px 10px; background-color: red; color: white; border: none; border-radius: 5px; cursor: pointer;">Hapus</button>
+    </div>
+    <div class="product">
+      <img
+        alt="Vit Galon"
+        height="200"
+        src="../img/galonvit.jpg"
+        width="150"
+      />
+      <div class="new-price">Rp50.900</div>
+      <div class="description">
+        VIT Galon
+        <br />
+        19 Liter
+      </div>
+    </div>
+    <div class="product">
+      <img
+        alt="Le mineral"
+        height="200"
+        src="../img/galonlemineral.webp"
+        width="150"
+      />
+      <div class="new-price">Rp19.500</div>
+      <div class="description">
+        Le Mineral Galon
+        <br />
+        15 Liter
+      </div>
+    </div>
+    <div class="product">
+      <img
+        alt="Crystaline"
+        height="200"
+        src="../img/crystaline.jpeg"
+        width="150"
+      />
+      <div class="new-price">Rp51.900</div>
+      <div class="description">
+        [Galon Beli Air] Crystalline Galon
+        <br />
+        19 Liter
+      </div>
+    </div>
+    <div class="product">
+      <img
+        alt="pristine"
+        height="200"
+        src="../img/galonpristine.jpg"
+        width="150"
+      />
+      <div class="new-price">Rp59.000</div>
+      <div class="description">
+        [Galon Beli Air] Pristine Galon PH 8Beli
+        <br />
+        19 Liter
+      </div>
+    </div>
+    <div class="product">
+      <img
+        alt="Oasis"
+        height="200"
+        src="../img/galonoasis.jpg"
+        width="150"
+      />
+      <div class="new-price">Rp56.000</div>
+      <div class="description">
+        Oasis Air Mineral [Galon Beli Air]
+        <br />
+        19 Liter
+      </div>
+    </div>
+    <div class="product">
+      <img
+        alt="amidis"
+        height="200"
+        src="../img/galonadimis.jpeg"
+        width="150"
+      />
+      <div class="new-price">Rp64.000</div>
+      <div class="description">
+        Amidis Galon
+        <br />
+        19 Liter
+      </div>
+    </div>
+    <div class="product">
+      <img
+        alt="Ron88"
+        height="200"
+        src="../img/galonron88.jpg"
+        width="150"
+      />
+      <div class="new-price">Rp47.500</div>
+      <div class="description">
+        Ron88 [Galon Beli Air]
+        <br />
+        19 Liter
+      </div>
+    </div>
+    <div class="product">
+      <img
+        alt="Club"
+        height="200"
+        src="../img/galonclub.jpeg"
+        width="150"
+      />
+      <div class="new-price">Rp58.000</div>
+      <div class="description">
+        Air Mineral Club [Galon Beli Air]
+        <br />
+        19 Liter
+      </div>
+    </div>
+    <div class="product">
+      <img
+        alt="Brightgas"
+        height="200"
+        src="../img/gasbright.jpg"
+        width="150"
+      />
+      <div class="new-price">Rp209.000</div>
+      <div class="description">
+        Isi Bright Gas
+        <br />
+        12 Kg
+      </div>
+    </div>
+    <div class="product">
+      <img
+        alt="Gas 12kg"
+        height="200"
+        src="../img/gas12kg.jpeg"
+        width="150"
+      />
+      <div class="new-price">Rp209.000</div>
+      <div class="description">
+        Isi Gas Elpiji Biru
+        <br />
+        12 Kg
+      </div>
+    </div>
+    <div class="product">
+      <img
+        alt="Gas 3kg"
+        height="200"
+        src="../img/gas3kg.jpeg"
+        width="150"
+      />
+      <div class="new-price">Rp22.000</div>
+      <div class="description">
+        Isi Gas Elpiji
+        <br />
+        3 Kg
+      </div>
+    </div>
+    <div class="product">
+      <img
+        alt="Gas 12kg"
+        height="200"
+        src="../img/primgas.jpeg"
+        width="150"
+      />
+      <div class="new-price">Rp215.000</div>
+      <div class="description">
+        Isi Primgas LPG
+        <br />
+        12 Kg
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="footer">
+    <a href="index-admin.html"><i class="fas fa-store"></i> Toko</a>
+    <a href="transaksi-admin.html"><i class="fas fa-file-alt"></i> Transaksi</a>
+    <a href="produk.html"><i class="fas fa-box"></i> Produk</a>
+  </div>
+  <script>
+    // Fungsi untuk menghapus produk
+    function deleteProduct(event) {
+      const product = event.target.closest('.product'); // Temukan elemen produk terdekat
+      product.remove(); // Hapus produk dari DOM
+    }
+  
+    // Tambahkan event listener ke semua tombol hapus
+    document.querySelectorAll('.delete-product').forEach(button => {
+      button.addEventListener('click', deleteProduct);
+    });
+  
+    // Fungsi untuk menambahkan produk baru
+    function addProduct() {
+      const productContainer = document.getElementById('products');
+  
+      // Contoh produk baru
+      const newProduct = document.createElement('div');
+      newProduct.classList.add('product');
+      newProduct.innerHTML = `
+        <img alt="Produk Baru" src="../img/default-product.jpg" />
+        <div class="new-price">Rp0</div>
+        <div class="description">Produk Baru<br />Deskripsi</div>
+        <button class="delete-product" style="margin-top: 10px; padding: 5px 10px; background-color: red; color: white; border: none; border-radius: 5px; cursor: pointer;">Hapus</button>
+      `;
+  
+      productContainer.appendChild(newProduct);
+  
+      // Tambahkan event listener untuk tombol hapus baru
+      newProduct.querySelector('.delete-product').addEventListener('click', deleteProduct);
+    }
+  
+    // Tambahkan event listener ke tombol "Tambah Produk"
+    document.getElementById('add-product-button').addEventListener('click', addProduct);
+  </script>
+  
+</body>
+</html>
