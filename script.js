@@ -1,15 +1,15 @@
-// Inisialisasi halaman setelah konten dimuat
+
 document.addEventListener("DOMContentLoaded", () => {
   const buttons = document.querySelectorAll(".product button");
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  // Fungsi untuk memperbarui halaman transaksi
+  // memperbarui halaman transaksi
   function updateTransactionPage() {
     localStorage.setItem("cart", JSON.stringify(cart));
     renderCart();
   }
 
-  // Event untuk semua tombol beli
+  // semua tombol beli
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
       const productElement = button.closest(".product");
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
       if (!button.classList.contains("counter")) {
-        // Tambahkan produk ke keranjang
+        // tambahkan produk ke keranjang
         button.innerHTML = `
           <button class="decrease">-</button>
           <span class="count">1</span>
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cart.push({ name: productName, price: productPrice, quantity: 1 });
         updateTransactionPage();
 
-        // Event tombol (+) dan (-)
+        // tombol (+) dan (-)
         const decreaseBtn = button.querySelector(".decrease");
         const increaseBtn = button.querySelector(".increase");
         const countSpan = button.querySelector(".count");
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Fungsi untuk merender keranjang
+  // render keranjang
   function renderCart() {
     const cartContainer = document.getElementById("cart-items");
     const totalPriceElement = document.getElementById("total-price");
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     totalPriceElement.textContent = `Rp${totalPrice.toLocaleString()}`;
 
-    // Menambahkan input alamat
+    // input alamat
     const checkoutSection = document.getElementById("checkout-section");
     checkoutSection.innerHTML = `
       <label for="address">Masukkan Alamat Pengiriman:</label><br>
@@ -115,13 +115,13 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
-  // Fungsi untuk menghapus item
+  // menghapus item
   window.removeItem = function (index) {
     cart.splice(index, 1);
     updateTransactionPage();
   };
 
-  // Fungsi untuk checkout
+  // checkout
 const checkoutSection = document.getElementById("checkout-section");
 
 if (checkoutSection) {
@@ -180,7 +180,7 @@ if (checkoutSection) {
             <div class="total">Silahkan siapkan uang tunai sebesar <strong>Rp${total.toLocaleString()}</strong> sesuai pesanan.</div>
             <div class="address">Alamat Pengiriman: <strong>${address}</strong></div>
             <button onclick="window.close()" style="background-color: #00b14f; color: white; padding: 10px 20px; border: none; cursor: pointer;">
-              <a href="page.html" style="text-decoration: none; color: white;">Kembali Belanja</a>
+              <a href="index.html" style="text-decoration: none; color: white;">Kembali Belanja</a>
             </button>
           </body>
         </html>
